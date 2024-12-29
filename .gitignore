@@ -398,3 +398,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+Brimborium.Angular/src/WebApp/wwwroot/
+Brimborium.Macro/src/WebApp/wwwroot/
+
+#
