@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../WebApp/wwwroot/",
+            "outputPath": "../WebApp/wwwroot/static/",
             "deleteOutputPath": true,
             "extractLicenses": false,
             "index": "src/index.html",
