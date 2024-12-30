@@ -1,3 +1,5 @@
+using Brimborium.Angular.WebApp.Services.CopyClientAppFiles;
+
 using Microsoft.AspNetCore.Authentication.Negotiate;
 
 namespace Brimborium.Angular.WebApp;
@@ -18,6 +20,13 @@ public class Program {
         });
         builder.Services.AddRazorPages();
 
+        //builder.Environment.EnvironmentName = "Development";
+
+        //if (builder.Environment.IsDevelopment()) { 
+        //    builder.Services.AddHostedService<CopyClientAppFilesWorker>();
+        //}
+
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -33,10 +42,12 @@ public class Program {
 
         app.UseAuthorization();
 
+        app.UseDefaultFiles();
         app.MapStaticAssets();
+        app.UseStaticFiles();
 
         // app.MapRazorPages().WithStaticAssets();
-
+        app.MapFallbackToFile("/index.html");
         app.Run();
     }
 }
