@@ -1,4 +1,4 @@
-﻿namespace Brimborium.Angular.WebApp.Services.CopyClientAppFiles;
+﻿namespace Brimborium.Angular.WebApp.Services.ClientAppFiles;
 
 public class ClientAppFilesExtensions {
 }

@@ -18,14 +18,10 @@ public class Program {
             // By default, all incoming requests will be authorized according to the default policy.
             options.FallbackPolicy = options.DefaultPolicy;
         });
-        builder.Services.AddRazorPages();
 
-        //builder.Environment.EnvironmentName = "Development";
+        // builder.Services.AddRazorPages();
 
-        //if (builder.Environment.IsDevelopment()) { 
-        //    builder.Services.AddHostedService<CopyClientAppFilesWorker>();
-        //}
-
+        builder.Services.AddClientAppFiles();
 
         var app = builder.Build();
 
@@ -46,8 +42,11 @@ public class Program {
         app.MapStaticAssets();
         app.UseStaticFiles();
 
-        // app.MapRazorPages().WithStaticAssets();
-        app.MapFallbackToFile("/index.html");
+        //app.MapRazorPages().WithStaticAssets();
+        //app.MapFallbackToFile("/index.html");
+
+        app.MapClientAppFiles();
+        app.UseMiddleware
         app.Run();
     }
 }
