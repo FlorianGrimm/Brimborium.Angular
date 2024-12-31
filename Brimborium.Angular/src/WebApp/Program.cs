@@ -1,6 +1,7 @@
-using Brimborium.Angular.WebApp.Services.CopyClientAppFiles;
+using Brimborium.Angular.WebApp.Services.ClientAppFiles;
 
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.AspNetCore.Builder;
 
 namespace Brimborium.Angular.WebApp;
 
@@ -8,7 +9,7 @@ public class Program {
     public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        builder.Logging.AddConsole();
 
         builder.Services
             .AddAuthentication(NegotiateDefaults.AuthenticationScheme)
@@ -19,9 +20,14 @@ public class Program {
             options.FallbackPolicy = options.DefaultPolicy;
         });
 
-        // builder.Services.AddRazorPages();
+        builder.Services.AddRazorPages();
 
-        builder.Services.AddClientAppFiles();
+        builder.Services.AddClientAppFiles(configureOptions: (options) => {
+            options.ListRequestPath = [
+                new PathDocument(new PathString("/en-US"), new PathString("/en-US/index.html")),
+                new PathDocument(new PathString("/de-DE"), new PathString("/de-DE/index.html")),
+                ];
+        });
 
         var app = builder.Build();
 
@@ -38,15 +44,11 @@ public class Program {
 
         app.UseAuthorization();
 
-        app.UseDefaultFiles();
+        app.MapClientAppFiles();
+        //app.UseClientAppFiles();
         app.MapStaticAssets();
         app.UseStaticFiles();
 
-        //app.MapRazorPages().WithStaticAssets();
-        //app.MapFallbackToFile("/index.html");
-
-        app.MapClientAppFiles();
-        app.UseMiddleware
         app.Run();
     }
 }

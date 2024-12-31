@@ -1,4 +1,8 @@
-﻿namespace Brimborium.Angular.WebApp.Services.ClientAppFiles;
+﻿using Microsoft.Extensions.Configuration;
 
-public class ClientAppFilesExtensions {
+namespace Brimborium.Angular.WebApp.Services.ClientAppFiles;
+
+public static class ClientAppFilesExtensions {
+    public static void Bind(this ClientAppFilesOptions options, IConfiguration configuration) { 
+    }
 }

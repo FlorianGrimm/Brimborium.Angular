@@ -1,4 +1,4 @@
-namespace Brimborium.Angular.WebApp.Brimborium.Extensions.Logging.LocalFile {
+namespace Brimborium.Extensions.Logging.LocalFile {
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
     internal readonly struct LogMessage {
         public LogMessage(DateTimeOffset timestamp, string message) {

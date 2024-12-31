@@ -43,10 +43,10 @@
     dotnet build
     ```
 
-6. todo
+6. extract-i18n
 
     ```cmd
-    x
+    ng extract-i18n --output-path src/locale --out-file messages.en-US.xlf
     ```
 
 eof

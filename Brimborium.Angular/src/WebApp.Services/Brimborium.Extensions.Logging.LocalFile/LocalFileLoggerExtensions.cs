@@ -1,11 +1,10 @@
 // Use if you using Microsoft.Extensions.Hosting
 // #define LocalFileIHostApplicationLifetime
 
-namespace Brimborium.Angular.WebApp.Brimborium.Extensions.Logging.LocalFile {
-    using Brimborium.Extensions.Logging.LocalFile;
-
+namespace Brimborium.Extensions.Logging.LocalFile {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Logging.Configuration;
     using Microsoft.Extensions.Options;
 

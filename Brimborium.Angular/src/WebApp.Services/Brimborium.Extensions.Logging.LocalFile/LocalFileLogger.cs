@@ -1,6 +1,6 @@
 #pragma warning disable IDE0079 // Remove unnecessary suppression
 
-namespace Brimborium.Angular.WebApp.Brimborium.Extensions.Logging.LocalFile {
+namespace Brimborium.Extensions.Logging.LocalFile {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.ObjectPool;

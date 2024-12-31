@@ -1,4 +1,4 @@
-﻿namespace Brimborium.Angular.WebApp.Brimborium.Extensions.Logging.LocalFile {
+﻿namespace Brimborium.Extensions.Logging.LocalFile {
     using System;
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Microsoft.Extensions.DependencyInjection;

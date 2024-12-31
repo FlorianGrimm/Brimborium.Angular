@@ -1,4 +1,4 @@
-﻿namespace Brimborium.Angular.WebApp.Brimborium.Extensions.Logging.LocalFile {
+﻿namespace Brimborium.Extensions.Logging.LocalFile {
     /// <summary>
     /// Internal Logger - if inner failed.
     /// </summary>
