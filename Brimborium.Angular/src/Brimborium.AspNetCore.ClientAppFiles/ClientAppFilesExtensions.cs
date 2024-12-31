@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Brimborium.Angular.WebApp.Services.ClientAppFiles;
+namespace Brimborium.AspNetCore.ClientAppFiles;
 
 public static class ClientAppFilesExtensions {
     public static void Bind(this ClientAppFilesOptions options, IConfiguration configuration) {
@@ -8,8 +8,8 @@ public static class ClientAppFilesExtensions {
             && listChild.Any()) {
             var listRequestPath = new List<PathDocument>();
             foreach (var child in listChild) {
-                if (child.GetSection(nameof(PathDocument.Path)).Value is { } path) {
-                    if (!(child.GetSection(nameof(PathDocument.Document)).Value is { Length: > 0 } document)) {
+                if (child.Key is { } path) {
+                    if (!(child.Value is { Length: > 0 } document)) {
                         document = path + "/index.html";
                     }
                     listRequestPath.Add(new PathDocument(path, document));

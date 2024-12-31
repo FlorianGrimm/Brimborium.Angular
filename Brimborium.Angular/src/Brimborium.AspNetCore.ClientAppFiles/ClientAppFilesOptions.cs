@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 
-namespace Brimborium.Angular.WebApp.Services.ClientAppFiles;
+namespace Brimborium.AspNetCore.ClientAppFiles;
 
 public class ClientAppFilesOptions {
 

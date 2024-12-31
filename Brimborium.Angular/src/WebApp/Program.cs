@@ -1,7 +1,4 @@
-using Brimborium.Angular.WebApp.Services.ClientAppFiles;
-
 using Microsoft.AspNetCore.Authentication.Negotiate;
-using Microsoft.AspNetCore.Builder;
 
 namespace Brimborium.Angular.WebApp;
 
@@ -22,12 +19,9 @@ public class Program {
 
         builder.Services.AddRazorPages();
 
-        builder.Services.AddClientAppFiles(configureOptions: (options) => {
-            options.ListRequestPath = [
-                new PathDocument(new PathString("/en-US"), new PathString("/en-US/index.html")),
-                new PathDocument(new PathString("/de-DE"), new PathString("/de-DE/index.html")),
-                ];
-        });
+        builder.Services.AddClientAppFiles(
+            configuration: builder.Configuration.GetSection("ClientAppFiles")
+            );
 
         var app = builder.Build();
 

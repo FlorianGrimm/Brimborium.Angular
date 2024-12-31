@@ -1,4 +1,4 @@
-﻿using Brimborium.Angular.WebApp.Services.ClientAppFiles;
+﻿using Brimborium.AspNetCore.ClientAppFiles;
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

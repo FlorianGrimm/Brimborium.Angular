@@ -1,4 +1,4 @@
-﻿using Brimborium.Angular.WebApp.Services.ClientAppFiles;
+﻿using Brimborium.AspNetCore.ClientAppFiles;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
