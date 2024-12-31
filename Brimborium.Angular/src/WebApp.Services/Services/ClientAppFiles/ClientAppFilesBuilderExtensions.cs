@@ -36,7 +36,7 @@ public static class ClientAppFilesBuilderExtensions {
         endpoints.Map("/", CreateRequestDelegate(endpoints, clientAppFilesOptions.DefaultFile, staticFileOptions))
             .WithMetadata(new HttpMethodMetadata(_supportedHttpMethods));
 
-        app?.UseMiddleware<ClientAppFilesMiddleware>(staticFileOptions);
+        app?.UseMiddleware<ClientAppFilesMiddleware>(clientAppFilesOptions);
 
         return endpoints;
     }
