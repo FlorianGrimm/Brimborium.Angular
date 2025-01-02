@@ -19,6 +19,14 @@
     ng new ClientApp
     ```
 
+3. init @angular/localize
+
+    ```cmd
+    cd %root%\src\ClientApp
+    ng add @angular/localize
+    ```
+
+
 3. create WebApp
 
     ```cmd
@@ -28,6 +36,8 @@
     cd /D %root%
     dotnet solution add %root%\src\WebApp --solution-folder src
     ```
+
+
 
 4. build ClientApp
 
@@ -46,7 +56,8 @@
 6. todo
 
     ```cmd
-    x
+    cd %root%\src\ClientApp
+    ng add @angular/localize
     ```
 
 eof
