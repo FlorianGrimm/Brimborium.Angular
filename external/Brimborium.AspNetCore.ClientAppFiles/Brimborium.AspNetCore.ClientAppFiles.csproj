@@ -4,8 +4,6 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>$(ProjectPrefix).$(MSBuildProjectName)</AssemblyName>
-    <RootNamespace>$(ProjectPrefix).WebApp</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
