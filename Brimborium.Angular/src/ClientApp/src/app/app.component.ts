@@ -1,10 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import cfg from './cfg.json';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { AsyncPipe } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { TreeComponent } from "./shell/tree/tree.component";
+import { NavigationComponent } from "./shell/navigation/navigation.component";
+
+//import { NavigationComponent } from './shell/navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    MatMenuModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
+    TreeComponent,
+    NavigationComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

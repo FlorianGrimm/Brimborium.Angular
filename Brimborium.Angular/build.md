@@ -29,21 +29,27 @@
     dotnet solution add %root%\src\WebApp --solution-folder src
     ```
 
-4. build ClientApp
+4. restart dev
 
     ```cmd
-    cd %root%\src\ClientApp
+    set root=D:\github.com\FlorianGrimm\Brimborium.Angular\Brimborium.Angular\
+    ```
+
+5. build ClientApp
+
+    ```cmd
+    cd /D %root%\src\ClientApp
     npm run watch
     ```
 
-5. build WebApp
+6. build WebApp
 
     ```cmd
-    cd %root%\src\WebApp
+    cd /D %root%\src\WebApp
     dotnet build
     ```
 
-6. extract-i18n
+7. extract-i18n
 
     ```cmd
     ng extract-i18n --output-path src/locale --out-file messages.en-US.xlf
