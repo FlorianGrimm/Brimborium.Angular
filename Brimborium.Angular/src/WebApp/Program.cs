@@ -17,11 +17,9 @@ public class Program {
             options.FallbackPolicy = options.DefaultPolicy;
         });
 
-        builder.Services.AddRazorPages();
+        // builder.Services.AddRazorPages();
 
-        builder.Services.AddClientAppFiles(
-            configuration: builder.Configuration.GetSection("ClientAppFiles")
-            );
+        builder.Services.AddClientAppFiles(configuration: builder.Configuration.GetSection("ClientAppFiles"));
 
         var app = builder.Build();
 
@@ -39,7 +37,6 @@ public class Program {
         app.UseAuthorization();
 
         app.MapClientAppFiles();
-        //app.UseClientAppFiles();
         app.MapStaticAssets();
         app.UseStaticFiles();
 

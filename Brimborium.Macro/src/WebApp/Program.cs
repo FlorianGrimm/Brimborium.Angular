@@ -1,9 +1,13 @@
+using Brimborium.DependencyInjection.Registration;
+
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.OpenApi;
 
 namespace Brimborium.Macro.WebApp;
 
 public class Program {
     public static void Main(string[] args) {
+        VisualStudioInstanceUtility.RegisterInstance();
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -16,7 +20,26 @@ public class Program {
             // By default, all incoming requests will be authorized according to the default policy.
             options.FallbackPolicy = options.DefaultPolicy;
         });
-        builder.Services.AddRazorPages();
+
+        builder.Services.AddOpenApi("v1", (options) => {
+            options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
+        });
+
+        //builder.Services.AddRazorPages();
+
+        builder.Services.AddClientAppFiles(configuration: builder.Configuration.GetSection("ClientAppFiles"));
+
+        builder.Services.AddMacroServices();
+
+        builder.Services.AddOptions<ProgramOptions>().BindConfiguration("");
+
+        builder.Services.AddSignalR((options) => {
+            options.EnableDetailedErrors = true;
+        }).AddJsonProtocol((options) => {
+            options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+        }).AddMessagePackProtocol((options) => { 
+            options.SerializerOptions.WithCompression(MessagePack.MessagePackCompression.Lz4BlockArray);
+        });
 
         var app = builder.Build();
 
@@ -28,15 +51,18 @@ public class Program {
         }
 
         app.UseHttpsRedirection();
-
         app.UseRouting();
 
         app.UseAuthorization();
 
+        app.MapOpenApi();
+        app.MapClientAppFiles();
         app.MapStaticAssets();
+        app.UseStaticFiles();
 
-        // app.MapRazorPages().WithStaticAssets();
-
+        app.MapMinimalAPI();
+        
         app.Run();
     }
+
 }
