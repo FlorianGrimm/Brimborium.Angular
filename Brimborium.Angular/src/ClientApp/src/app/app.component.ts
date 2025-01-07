@@ -12,8 +12,8 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { TreeComponent } from "./shell/tree/tree.component";
 import { NavigationComponent } from "./shell/navigation/navigation.component";
+import { RootToolbarComponent } from './root/root-toolbar/root-toolbar.component';
 
-//import { NavigationComponent } from './shell/navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
@@ -24,14 +24,14 @@ import { NavigationComponent } from "./shell/navigation/navigation.component";
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    RootToolbarComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'ClientApp';
-
   ngOnInit(): void {
     console.log(cfg);
     this.title = cfg.Greetings;

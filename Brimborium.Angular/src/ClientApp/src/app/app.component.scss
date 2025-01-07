@@ -1,37 +1,36 @@
 .approot-container{
-  min-height: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
   display: flex;
   flex-direction: column;
-  padding: 4px;
 
   & > .approot-header-container{
     border: solid 1px darkgray;
     border-radius: 1px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 4px;
+    padding-bottom: 4px;
   }
 
   & > .approot-middle-container{
     border: solid 1px darkgray;
     border-radius: 1px;
+    box-sizing: border-box;
     flex-grow: 1;
-    display: flex;
-    padding: 4px;
-
+    padding-top: 4px;
+    padding-bottom: 4px;
     & > router-outlet{
       width: 0;
     }
 
-    & > app-designer-home {
-      width: 100%;
+    & > * {
+      display: block;
     }
   }
 
   & > .approot-footer-container{
     border: solid 1px darkgray;
     border-radius: 1px;
-    padding: 4px;
+    padding-top: 4px;
   }
 }
