@@ -3,13 +3,15 @@
 1. folder structur
 
     ```cmd
-    set root=D:\github.com\FlorianGrimm\Brimborium.Angular\Brimborium.Macro\
+    set root=D:\github.com\FlorianGrimm\Brimborium.Angular\Brimborium.DefineAPI\
     mkdir %root%
     cd /D %root%
     dotnet new sln
     mkdir %root%\src
     mkdir %root%\documentation
     mkdir %root%\progress
+    mkdir %root%\samplesimple
+    mkdir %root%\samplei18n
     ```
 
 2. create ClientApp
@@ -61,3 +63,4 @@
     ```
 
 eof
+cd /D 
