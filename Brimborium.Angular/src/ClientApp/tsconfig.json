@@ -20,7 +20,12 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@app/*":["./src/app/*"]
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "designer": [
+        "./dist/designer"
+      ]
     }
   },
   "angularCompilerOptions": {

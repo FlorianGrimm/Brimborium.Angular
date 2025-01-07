@@ -7,10 +7,7 @@
     "types": [
       "jasmine",
       "@angular/localize"
-    ],
-    "paths": {
-      "@app/*":["./src/app/*"]
-    }
+    ]
   },
   "include": [
     "src/**/*.spec.ts",
