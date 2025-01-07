@@ -23,9 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": ["en-US"],
-            "baseHref": "/",
-            "outputPath": "../WebApp/wwwroot/",
+            /* "localize": ["en-US"], */
+            "baseHref": "/en-US/",
+            "outputPath": "../WebApp/wwwroot/en-US/",
             "deleteOutputPath": true,
             "extractLicenses": false,
             "index": "src/index.html",

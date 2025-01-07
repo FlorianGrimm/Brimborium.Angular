@@ -19,7 +19,14 @@ public class Program {
 
         // builder.Services.AddRazorPages();
 
-        builder.Services.AddClientAppFiles(configuration: builder.Configuration.GetSection("ClientAppFiles"));
+        builder.Services.AddClientAppFiles(
+            //configuration: builder.Configuration.GetSection("ClientAppFiles"),
+            configureOptions: (options) => {
+                options.DefaultFile = "/en-US/index.html";
+                options.ListRequestPath = [
+                    new("/en-US", "/en-US/index.html")
+                    ];
+            });
 
         var app = builder.Build();
 
@@ -31,14 +38,15 @@ public class Program {
         }
 
         app.UseHttpsRedirection();
-
+        app.UseRequestLocalization(); ;
         app.UseRouting();
 
         app.UseAuthorization();
 
         app.MapClientAppFiles();
         app.MapStaticAssets();
-        app.UseStaticFiles();
+        
+        // app.UseStaticFiles();
 
         app.Run();
     }

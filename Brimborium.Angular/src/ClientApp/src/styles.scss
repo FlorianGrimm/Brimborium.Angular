@@ -2,3 +2,27 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.component-verticalsplit-container{
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 4px;
+  .component-verticalsplit-left{
+    border: solid 1px darkgray;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+  }
+  .component-verticalsplit-middle{
+    border: solid 1px darkgray;
+    border-radius: 1px;
+    flex-grow: 1;
+    display: flex;
+    padding: 4px;
+  }
+}

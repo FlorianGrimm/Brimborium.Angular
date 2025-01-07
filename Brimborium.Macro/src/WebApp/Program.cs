@@ -33,13 +33,13 @@ public class Program {
 
         builder.Services.AddOptions<ProgramOptions>().BindConfiguration("");
 
-        builder.Services.AddSignalR((options) => {
-            options.EnableDetailedErrors = true;
-        }).AddJsonProtocol((options) => {
-            options.PayloadSerializerOptions.PropertyNamingPolicy = null;
-        }).AddMessagePackProtocol((options) => { 
-            options.SerializerOptions.WithCompression(MessagePack.MessagePackCompression.Lz4BlockArray);
-        });
+        //builder.Services.AddSignalR((options) => {
+        //    options.EnableDetailedErrors = true;
+        //}).AddJsonProtocol((options) => {
+        //    options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+        //}).AddMessagePackProtocol((options) => { 
+        //    options.SerializerOptions.WithCompression(MessagePack.MessagePackCompression.Lz4BlockArray);
+        //});
 
         var app = builder.Build();
 

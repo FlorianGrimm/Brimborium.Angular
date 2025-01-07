@@ -24,9 +24,7 @@ import { NavigationComponent } from "./shell/navigation/navigation.component";
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
-    MatListModule,
-    TreeComponent,
-    NavigationComponent
+    MatListModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

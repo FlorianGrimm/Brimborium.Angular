@@ -1,21 +1,12 @@
-<mat-drawer-container class="app-container">
-  <mat-drawer mode="side" opened>
-    <app-navigation></app-navigation>
-    <mat-toolbar>Menu1</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-drawer>
-  <mat-drawer-content>
-    <router-outlet />
-    Main content
-    <h1 i18n>Hello, World!</h1>
-    <h2 i18n>Something</h2>
-    <div>{{title}}</div>
-    <hr/>
-    <app-tree></app-tree>
-    <hr/>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div class="approot-container">
+  <div class="approot-header-container">
+    Header
+  </div>
+  <div class="approot-middle-container">
+    <router-outlet style="width: min-content;">
+    </router-outlet>
+  </div>
+  <div class="approot-footer-container">
+    Footer
+  </div>
+</div>
