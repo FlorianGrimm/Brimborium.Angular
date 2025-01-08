@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DesignerObjectComponent } from './designer-object.component';
+import { DesignerStartComponent } from './designer-start.component';
 
-describe('DesignerObjectComponent', () => {
-  let component: DesignerObjectComponent;
-  let fixture: ComponentFixture<DesignerObjectComponent>;
+describe('DesignerStartComponent', () => {
+  let component: DesignerStartComponent;
+  let fixture: ComponentFixture<DesignerStartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DesignerObjectComponent]
+      imports: [DesignerStartComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DesignerObjectComponent);
+    fixture = TestBed.createComponent(DesignerStartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

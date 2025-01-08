@@ -4,10 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --localize",
-    "build:dev": "ng build --localize --configuration development",
-    "watch": "ng build --watch --configuration development",
-    "watch:dsng": "ng build designer --watch --configuration development",
+    "build": "npm run build:designer:prod && npm run build:app:prod",
+    "build:app:prod": "ng build --localize --configuration production",
+    "build:designer:prod": "ng build --localize --configuration production",
+    "build:dev": "npm run build:designer:dev && npm run build:app:dev",
+    "build:app:dev": "ng build --localize --configuration development",
+    "build:designer:dev": "ng build --localize --configuration development",
+    "watch:app": "ng build --watch --configuration development",
+    "watch:designer": "ng build designer --watch --configuration development",
     "test": "ng test"
   },
   "private": true,

@@ -1,8 +1,14 @@
 import { Routes } from '@angular/router';
-import { DesignerHomeComponent } from './designer/designer-home/designer-home.component';
 import { RootHomeComponent } from './root/root-home/root-home.component';
+//import { DesignerHomeComponent } from 'designer';
+//import { DesignerHomeComponent } from './designer/designer-home/designer-home.component';
+import { designerRoutes } from 'designer';
+
+const appRoutes: Routes = [
+  {path:'', component:RootHomeComponent},
+];
 
 export const routes: Routes = [
-  {path:'', component:RootHomeComponent},
-  {path:'designer', component:DesignerHomeComponent},
+  ...appRoutes,
+  ...designerRoutes
 ];
