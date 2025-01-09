@@ -1,9 +1,9 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+    <button mat-icon-button [matMenuTriggerFor]="mainMenu" aria-label="Menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
+    <mat-menu #mainMenu="matMenu">
       <button mat-menu-item routerLink="/designer">
         <mat-icon>dialpad</mat-icon>
         <span>Designer</span>
@@ -12,26 +12,28 @@
         <mat-icon>dialpad</mat-icon>
         <span>App</span>
       </button>
+      @for (mainMenuGroupItems of mainMenuItems$ | async; track mainMenuGroupItems.menuGroup.id) {
+        @for (item of mainMenuGroupItems.items; track item.id) {
+          @if(item.template !== undefined) {
+            <ng-container [ngTemplateOutlet]="item.template" [ngTemplateOutletContext]="item.context"></ng-container>
+          }
+        }
+      }
     </mat-menu>
+
     <span>ClientApp</span>
     <span class="example-spacer"></span>
-    @for (toolbarGroupItems of items$ | async; track toolbarGroupItems.toolbarGroup.id) {
+    @for (toolbarGroupItems of toolbarItems$ | async; track toolbarGroupItems.toolbarGroup.id) {
       @for (item of toolbarGroupItems.items; track item.id) {
         @if(item.template !== undefined) {
           <ng-container [ngTemplateOutlet]="item.template" [ngTemplateOutletContext]="item.context"></ng-container>
         }
       }
     }
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-    <button mat-icon-button [matMenuTriggerFor]="menuRight" aria-label="Example icon-button with a menu">
+    <button mat-icon-button [matMenuTriggerFor]="pageMmenu" aria-label="Example icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
     </button>
-    <mat-menu #menuRight="matMenu">
+    <mat-menu #pageMmenu="matMenu">
       <button mat-menu-item>
         <mat-icon>dialpad</mat-icon>
         <span>Some</span>
@@ -44,6 +46,13 @@
         <mat-icon>notifications_off</mat-icon>
         <span>Disable alerts</span>
       </button>
+      @for (pageMenuGroupItems of pageMenuItems$ | async; track pageMenuGroupItems.menuGroup.id) {
+        @for (item of pageMenuGroupItems.items; track item.id) {
+          @if(item.template !== undefined) {
+            <ng-container [ngTemplateOutlet]="item.template" [ngTemplateOutletContext]="item.context"></ng-container>
+          }
+        }
+      }
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

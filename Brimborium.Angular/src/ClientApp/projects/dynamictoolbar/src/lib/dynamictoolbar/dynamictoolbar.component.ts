@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { ToolbarGroupItems } from '../type';
+import { MenuGroupItems,ToolbarGroupItems } from '../type';
 
 import { DynamicToolbarService } from '../dynamictoolbar.service';
 
@@ -23,15 +23,35 @@ export class DynamicToolbarComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   private dynamicToolbarService = inject(DynamicToolbarService);
 
-  public readonly items$ = new BehaviorSubject<Readonly<ToolbarGroupItems[]>>([]);
+  public readonly mainMenuItems$ = new BehaviorSubject<Readonly<MenuGroupItems[]>>([]);
+  public readonly toolbarItems$ = new BehaviorSubject<Readonly<ToolbarGroupItems[]>>([]);
+  public readonly pageMenuItems$ = new BehaviorSubject<Readonly<MenuGroupItems[]>>([]);
 
   ngOnInit(): void {
+    this.subscription.add(
+      this.dynamicToolbarService.lstMainMenuGroups.pipe(
+        tap({})
+      ).subscribe({
+        next: (value) => {
+          this.mainMenuItems$.next(value);
+        },
+      })
+    );
     this.subscription.add(
       this.dynamicToolbarService.lstToolbarGroups.pipe(
         tap({})
       ).subscribe({
         next: (value) => {
-          this.items$.next(value);
+          this.toolbarItems$.next(value);
+        },
+      })
+    );
+    this.subscription.add(
+      this.dynamicToolbarService.lstPageMenuGroups.pipe(
+        tap({})
+      ).subscribe({
+        next: (value) => {
+          this.pageMenuItems$.next(value);
         },
       })
     );

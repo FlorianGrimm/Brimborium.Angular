@@ -1,23 +1,37 @@
 <dyntb-dynamictoolbar>
 
 </dyntb-dynamictoolbar>
-<ng-template #tbOne>
+<ng-template #tplMenuMainOne>
+  <button mat-menu-item routerLink="/designer">
+    <mat-icon>dialpad</mat-icon>
+    <span>Designer</span>
+  </button>
+  <button mat-menu-item routerLink="/">
+    <mat-icon>dialpad</mat-icon>
+    <span>App</span>
+  </button>
   <button mat-icon-button aria-label="search">
     <mat-icon>search</mat-icon>
   </button>
   <button mat-icon-button aria-label="TODO">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button aria-label="TODO">
-    <mat-icon>favorite</mat-icon>
+    <mat-icon>delete</mat-icon>
   </button>
 </ng-template>
-<ng-template #tbTwo>
-  <button mat-icon-button aria-label="TODO">
-    <mat-icon>favorite</mat-icon>
+
+<ng-template #tplTbOne>
+  <button mat-icon-button aria-label="search">
+    <mat-icon>note_add</mat-icon>
   </button>
   <button mat-icon-button aria-label="TODO">
-    <mat-icon>favorite</mat-icon>
+    <mat-icon>done</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="TODO">
+    <mat-icon>delete</mat-icon>
+  </button>
+</ng-template>
+<ng-template #tplTbTwo>
+  <button mat-icon-button aria-label="TODO">
+    <mat-icon>search</mat-icon>
   </button>
   <button mat-icon-button aria-label="TODO">
     <mat-icon>favorite</mat-icon>
