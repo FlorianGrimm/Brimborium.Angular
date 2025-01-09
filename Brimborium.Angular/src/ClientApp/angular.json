@@ -46,7 +46,8 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "preserveSymlinks": true
           },
           "configurations": {
             "production": {
@@ -143,6 +144,105 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/designer/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "dynamictoolbar": {
+      "projectType": "library",
+      "root": "projects/dynamictoolbar",
+      "sourceRoot": "projects/dynamictoolbar/src",
+      "prefix": "dyntb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dynamictoolbar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dynamictoolbar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dynamictoolbar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/dynamictoolbar/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "rxutils": {
+      "projectType": "library",
+      "root": "projects/rxutils",
+      "sourceRoot": "projects/rxutils/src",
+      "prefix": "rxutils",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/rxutils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/rxutils/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/rxutils/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/rxutils/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "logging": {
+      "projectType": "library",
+      "root": "projects/logging",
+      "sourceRoot": "projects/logging/src",
+      "prefix": "log",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/logging/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/logging/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/logging/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/logging/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

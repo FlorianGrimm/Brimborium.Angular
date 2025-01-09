@@ -1,0 +1,18 @@
+{
+  "name": "dynamictoolbar",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/animations": "^19.0.5",
+    "@angular/cdk": "^19.0.4",
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.5",
+    "@angular/material": "^19.0.4",
+    "@angular/router": "^19.0.5",
+    "rxjs": "~7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

@@ -1,17 +1,33 @@
 {
   "name": "client-app",
+  "workspaces":[
+    "projects/logging",
+    "projects/rxutils",
+    "projects/dynamictoolbar",
+    "projects/designer"
+  ],
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:designer:prod && npm run build:app:prod",
+
+    "build": "npm run build:logging:prod && npm run build:dyntb:prod && npm run build:designer:prod && npm run build:app:prod",
+    "build:logging:prod": "ng build logging --localize --configuration production",
+    "build:dyntb:prod": "ng build dyntb --localize --configuration production",
+    "build:designer:prod": "ng build designer --localize --configuration production",
     "build:app:prod": "ng build --localize --configuration production",
-    "build:designer:prod": "ng build --localize --configuration production",
-    "build:dev": "npm run build:designer:dev && npm run build:app:dev",
+
+    "build:dev": "npm run build:logging:dev && npm run build:dyntb:dev && npm run build:designer:dev && npm run build:app:dev",
+    "build:logging:dev": "ng build logging --localize --configuration development",
+    "build:dyntb:dev": "ng build dynamictoolbar --localize --configuration development",
+    "build:designer:dev": "ng build designer--localize --configuration development",
     "build:app:dev": "ng build --localize --configuration development",
-    "build:designer:dev": "ng build --localize --configuration development",
-    "watch:app": "ng build --watch --configuration development",
-    "watch:designer": "ng build designer --watch --configuration development",
+
+    "watch:logging": "ng build logging --configuration development --watch",
+    "watch:rxutils": "ng build rxutils --configuration development --watch",
+    "watch:dyntb": "ng build dynamictoolbar --configuration development --watch",
+    "watch:designer": "ng build designer --configuration development --watch",
+    "watch:app": "ng build --configuration development --watch ",
     "test": "ng test"
   },
   "private": true,

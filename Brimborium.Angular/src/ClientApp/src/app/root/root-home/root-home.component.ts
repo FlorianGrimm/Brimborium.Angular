@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {  RouterModule } from '@angular/router';
 
 @Component({
@@ -8,5 +8,4 @@ import {  RouterModule } from '@angular/router';
   styleUrl: './root-home.component.scss'
 })
 export class RootHomeComponent {
-
 }

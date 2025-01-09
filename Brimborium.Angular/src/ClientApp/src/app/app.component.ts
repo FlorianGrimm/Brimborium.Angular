@@ -13,6 +13,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { TreeComponent } from "./shell/tree/tree.component";
 import { NavigationComponent } from "./shell/navigation/navigation.component";
 import { RootToolbarComponent } from './root/root-toolbar/root-toolbar.component';
+import { LoggingService, loggingService } from 'logging';
 
 
 @Component({
@@ -26,9 +27,12 @@ import { RootToolbarComponent } from './root/root-toolbar/root-toolbar.component
     MatButtonModule,
     MatListModule,
     RootToolbarComponent
-],
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  providers:[
+    { provide: LoggingService, useExisting: loggingService}
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'ClientApp';

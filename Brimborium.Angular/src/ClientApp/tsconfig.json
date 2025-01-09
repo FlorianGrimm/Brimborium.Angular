@@ -25,6 +25,15 @@
       ],
       "designer": [
         "./dist/designer"
+      ],
+      "dynamictoolbar": [
+        "./dist/dynamictoolbar"
+      ],
+      "logging": [
+        "./dist/logging"
+      ],
+      "rxutils": [
+        "./dist/rxutils"
       ]
     }
   },
