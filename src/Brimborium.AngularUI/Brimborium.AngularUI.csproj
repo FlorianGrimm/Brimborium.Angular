@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Brimborium.Angular</RootNamespace>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="node_modules\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <None Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <Target Name="RestoreFrontendDependencies" BeforeTargets="Restore">
+    <Exec Command="pnpm install" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+
+  <Target Name="DebugBuildFrontendFiles" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
+    <ItemGroup>
+      <FrontendFiles Include="$(MSBuildProjectDirectory)\dist\development\*.js" />
+    </ItemGroup>
+    <Message Text="DebugBuildFrontendFiles: @(FrontendFiles)" Importance="high" Condition="'@(FrontendFiles)'!=''" />
+    <Exec Command="npm run build:Debug" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="'@(FrontendFiles)'!=''" />
+  </Target>
+
+  <Target Name="ReleaseBuildFrontendFiles" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+    <CallTarget Targets="ReleaseRemoveFrontendFiles" />
+    <Exec Command="npm run build:Release" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <CallTarget Targets="ReleaseCopyFrontendFiles" />
+  </Target>
+  <Target Name="ReleaseRemoveFrontendFiles" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+    <ItemGroup>
+      <FrontendFiles Include="$(MSBuildProjectDirectory)\wwwroot\**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FrontendFiles)" />
+  </Target>
+  <Target Name="ReleaseCopyFrontendFiles" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+    <ItemGroup>
+      <FrontendFiles Include="$(MSBuildProjectDirectory)\dist\production\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FrontendFiles)" DestinationFolder="$(MSBuildProjectDirectory)\wwwroot\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

@@ -1,0 +1,11 @@
+@Brimborium.Angular_HostAddress = http://localhost:5009
+
+GET {{Brimborium.Angular_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+GET {{Brimborium.Angular_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

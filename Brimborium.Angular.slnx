@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="steps.md" />
+    <File Path="steps.ps1" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Brimborium.Angular.Contract/Brimborium.Angular.Contract.csproj" />
+    <Project Path="src/Brimborium.Angular/Brimborium.Angular.csproj" />
+    <Project Path="src/Brimborium.AngularUI/Brimborium.AngularUI.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/Brimborium.Angular.Tests/Brimborium.Angular.Tests.csproj" />
+    <Project Path="test/Brimborium.Angular.UITests/Brimborium.Angular.UITests.csproj" />
+  </Folder>
+  <Project Path="doc/doc.csproj" />
+</Solution>

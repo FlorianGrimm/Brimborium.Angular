@@ -1,0 +1,12 @@
+packages:
+  - '.'
+
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+
+overrides:
+  "@emnapi/runtime": "1.7.1"
+  "@emnapi/core": "1.7.1"
