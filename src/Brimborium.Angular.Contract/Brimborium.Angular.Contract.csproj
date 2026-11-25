@@ -24,8 +24,6 @@
     </ItemGroup>
 
     <Target Name="TypedSignalRClient">
-        <Message Text="MSBuildThisFileDirectory:$(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\" Importance="high"/>
-        <Message Text="dotnet tool run dotnet-tsrts -- --project &quot;$(MSBuildProjectFullPath)&quot; --output &quot;$(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\&quot; --eol CrLf --serializer  Json --naming-style None --enum Name" Importance="high"/>
-        <Exec Command="dotnet tool run dotnet-tsrts -- --project $(MSBuildProjectFullPath) --output $(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\ --eol CrLf --serializer  Json --naming-style None --enum Name" />
+        <Exec Command="dotnet tool run dotnet-tsrts -- --project $(MSBuildProjectFullPath) --output $(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\generated\ --eol CrLf --serializer  Json --naming-style None --enum Name" />
     </Target>
 </Project>
