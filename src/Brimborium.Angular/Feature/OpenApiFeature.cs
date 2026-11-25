@@ -27,7 +27,7 @@ public sealed partial class OpenApiFeature(
             return;
         }
 
-        this._Logger.LogConfigureServicesFeature(_FeatureName);
+        this._Logger.LogConfigureServicesFeature(_FeatureName, string.Empty);
 
         var enableOpenApiStage
             = builder.Environment.IsDevelopment();

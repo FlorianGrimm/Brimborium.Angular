@@ -15,7 +15,7 @@ public sealed partial class CorsFeature(
             return;
         }
 
-        this._Logger.LogConfigureServicesFeature(_FeatureName);
+        this._Logger.LogConfigureServicesFeature(_FeatureName, string.Empty);
         /* https://github.com/Azure-Samples/containerapps-albumapi-csharp/blob/main/src/Program.cs */
         builder.Services.AddCors(options => {
             options.AddDefaultPolicy(builder => {

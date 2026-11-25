@@ -1,5 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <OutputType>Library</OutputType>
     <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -10,6 +11,10 @@
     <Compile Remove="node_modules\**" />
     <EmbeddedResource Remove="node_modules\**" />
     <None Remove="node_modules\**" />
+    <Content Remove="src\**" />
+    <None Include="src\**" />
+    <Content Remove="dist\**" />
+    <None Include="dist\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +29,13 @@
     <ItemGroup>
       <FrontendFiles Include="$(MSBuildProjectDirectory)\dist\development\*.js" />
     </ItemGroup>
-    <Message Text="DebugBuildFrontendFiles: @(FrontendFiles)" Importance="high" Condition="'@(FrontendFiles)'!=''" />
-    <Exec Command="npm run build:Debug" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="'@(FrontendFiles)'!=''" />
+    <Message Text="DebugBuildFrontendFiles: @(FrontendFiles)" Importance="high" Condition="'@(FrontendFiles)'==''" />
+    <Exec Command="npm run build:Debug" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="'@(FrontendFiles)'==''" />
   </Target>
 
   <Target Name="ReleaseBuildFrontendFiles" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
     <CallTarget Targets="ReleaseRemoveFrontendFiles" />
+    <Message Text="npm run build:Release $(MSBuildProjectDirectory)" Importance="high"/>
     <Exec Command="npm run build:Release" WorkingDirectory="$(MSBuildProjectDirectory)" />
     <CallTarget Targets="ReleaseCopyFrontendFiles" />
   </Target>
@@ -37,7 +43,7 @@
     <ItemGroup>
       <FrontendFiles Include="$(MSBuildProjectDirectory)\wwwroot\**\*.*" />
     </ItemGroup>
-    <Delete Files="@(FrontendFiles)" />
+    <Delete Files="@(FrontendFiles)" Condition="'@(FrontendFiles)'!=''" />
   </Target>
   <Target Name="ReleaseCopyFrontendFiles" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
     <ItemGroup>

@@ -31,7 +31,7 @@ public sealed partial class HtmlFeature(
         //this._SharedState = new SharedState(
         //    UseDevelopmentFiles: useDevelopmentFiles
         //    );
-    }
+     }
 
     public ConfigureWebApplicationOrder GetOrder() => 
         this._UseDevelopmentFiles

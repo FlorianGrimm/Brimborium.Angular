@@ -6,10 +6,26 @@
         <Nullable>enable</Nullable>
         <RootNamespace>Brimborium.Angular</RootNamespace>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <NoWarn>$(NoWarn);NU1510</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="System.Text.Json" />
+        <PackageReference Include="TypedSignalR.Client.TypeScript.Analyzer">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="TypedSignalR.Client.TypeScript.Attributes" />
+        <PackageReference Include="Tapper.Analyzer">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+
     </ItemGroup>
 
+    <Target Name="TypedSignalRClient">
+        <Message Text="MSBuildThisFileDirectory:$(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\" Importance="high"/>
+        <Message Text="dotnet tool run dotnet-tsrts -- --project &quot;$(MSBuildProjectFullPath)&quot; --output &quot;$(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\&quot; --eol CrLf --serializer  Json --naming-style None --enum Name" Importance="high"/>
+        <Exec Command="dotnet tool run dotnet-tsrts -- --project $(MSBuildProjectFullPath) --output $(MSBuildThisFileDirectory)..\Brimborium.AngularUI\src\ --eol CrLf --serializer  Json --naming-style None --enum Name" />
+    </Target>
 </Project>

@@ -21,7 +21,7 @@ public sealed partial class RateLimiterFeature(
             return;
         }
 
-        this._Logger.LogConfigureServicesFeature(_FeatureName);
+        this._Logger.LogConfigureServicesFeature(_FeatureName, string.Empty);
 
         builder.Services.AddRateLimiter(
             (Microsoft.AspNetCore.RateLimiting.RateLimiterOptions rateLimiterOptions) => {

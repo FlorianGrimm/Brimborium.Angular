@@ -20,6 +20,21 @@ namespace Microsoft.AspNetCore.Authentication.ApiKey {
     }
 
     public sealed class APIKeyAuthenticationHandler : AuthenticationHandler<APIKeyOptions> {
+        public static bool HasAPIKey(HttpContext httpContext) {
+            StringValues apiKey;
+            if (httpContext.Request.Headers.TryGetValue("APIKey", out apiKey)) {
+                // OK 
+            } else if (httpContext.Request.Headers.TryGetValue("X-API-Key", out apiKey)) {
+                // OK 
+            } else {
+                return false;
+            }
+            if (apiKey.FirstOrDefault() is not { Length: > 0 } apiKeyValue) {
+                return true;
+            } else { 
+                return false;
+            }
+        }
         public APIKeyAuthenticationHandler(
             IOptionsMonitor<APIKeyOptions> options,
             ILoggerFactory logger,

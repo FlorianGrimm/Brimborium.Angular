@@ -7,10 +7,15 @@
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="Injectio" Version="6.3.0" />
-    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="System.Text.Json" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="TUnit" Version="1.81.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="11.0.0-rc.3.26522.148" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0-rc.3.26522.148" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client.SourceGenerator" Version="7.0.0-preview.7.22376.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Protocols.Json" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="11.0.0" />
+    <PackageVersion Include="System.Text.Json" Version="11.0.0" />
+    <PackageVersion Include="Tapper.Analyzer" Version="1.15.1" />
+    <PackageVersion Include="TUnit" Version="1.87.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
+    <PackageVersion Include="TypedSignalR.Client.TypeScript.Analyzer" Version="1.18.0" />
+    <PackageVersion Include="TypedSignalR.Client.TypeScript.Attributes" Version="1.18.0" />
   </ItemGroup>
 </Project>

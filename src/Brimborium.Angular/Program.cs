@@ -14,6 +14,7 @@ public sealed partial class Program {
                 ApplicationFeaturesOptions applicationFeaturesOptions = new();
                 builder.Configuration.GetSectionApplication().Bind(applicationFeaturesOptions);
                 applicationFeatures = new ApplicationFeatures(
+                    AuthenticationNegotiate: applicationFeaturesOptions.AuthenticationNegotiate.GetValueOrDefault(true),
                     AuthenticationAPIKey: applicationFeaturesOptions.AuthenticationAPIKey,
                     EnableOpenApi: applicationFeaturesOptions.EnableOpenApi.GetValueOrDefault(true),
                     EnableOpenTelemetry: applicationFeaturesOptions.EnableOpenTelemetry.GetValueOrDefault(true),
@@ -70,6 +71,7 @@ public sealed partial class Program {
 }
 
 public sealed partial class ApplicationFeaturesOptions {
+    public bool? AuthenticationNegotiate { get; set; }
     public string? AuthenticationAPIKey { get; set; }
     public bool? EnableOpenApi { get; set; }
     public bool? EnableOpenTelemetry { get; set; }
@@ -83,6 +85,7 @@ public sealed partial class ApplicationFeaturesOptions {
 /// Enable Features
 /// </summary>
 public sealed partial record class ApplicationFeatures(
+    bool AuthenticationNegotiate,
     string? AuthenticationAPIKey,
     bool EnableOpenApi,
     bool EnableOpenTelemetry,
@@ -233,9 +236,9 @@ public static partial class IConfigureServicesLogExtension {
     // ConfigureServices
     [LoggerMessage(
         Level = LogLevel.Information,
-        Message = "ConfigureServices-Feature({featureName})"
+        Message = "ConfigureServices-Feature({featureName}) {additional}"
         )]
-    public static partial void LogConfigureServicesFeature(this ILogger logger, string featureName);
+    public static partial void LogConfigureServicesFeature(this ILogger logger, string featureName, string additional);
 
     [LoggerMessage(
         Level = LogLevel.Information,

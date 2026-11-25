@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authentication.Negotiate;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.ApiKey;
+using Microsoft.AspNetCore.Authentication.Negotiate;
 
 namespace Brimborium.Angular.Feature;
 
@@ -12,17 +14,48 @@ public sealed partial class AuthenticationFeature(
     private readonly ILogger<AuthenticationFeature> _Logger = logger;
     public void ConfigureServices(WebApplicationBuilder builder) {
         // Configure authentication services here
-        this._Logger.LogConfigureServicesFeature($"{_FeatureName}.Negotiate");
+        AuthenticationBuilder authenticationBuilder;
+        var authenticationAPIKey = this._ApplicationFeatures.AuthenticationAPIKey ?? string.Empty;
+        var useAuthenticationNegotiate = this._ApplicationFeatures.AuthenticationNegotiate;
+        var useAuthenticationAPIKey = (authenticationAPIKey is { Length: > 0 });
 
-        var authenticationBuilder = builder.Services
-            .AddAuthentication(NegotiateDefaults.AuthenticationScheme);
+        if (useAuthenticationNegotiate && useAuthenticationAPIKey) {
+            this._Logger.LogConfigureServicesFeature(_FeatureName, "Negotiate,APIKey");
+            authenticationBuilder = builder.Services
+                .AddAuthentication()
+                .AddPolicyScheme("Default", "Default", options => {
+                    options.ForwardDefaultSelector = forwardDefaultSelector;
 
-        {
+                    static string forwardDefaultSelector(HttpContext httpContext) {
+                        var hasAPIKey = APIKeyAuthenticationHandler.HasAPIKey(httpContext);
+                        if (hasAPIKey) {
+                            return global::Microsoft.AspNetCore.Authentication.ApiKey.APIKeyDefaults.AuthenticationScheme;
+                        } else {
+                            return global::Microsoft.AspNetCore.Authentication.Negotiate.NegotiateDefaults.AuthenticationScheme;
+                        }
+                    };
+                });
+        } else if (useAuthenticationNegotiate && !useAuthenticationAPIKey) {
+            this._Logger.LogConfigureServicesFeature(_FeatureName, "Negotiate");
+            authenticationBuilder = builder.Services
+                .AddAuthentication(NegotiateDefaults.AuthenticationScheme);
+        } else if (!useAuthenticationNegotiate && useAuthenticationAPIKey) {
+            this._Logger.LogConfigureServicesFeature(_FeatureName, "APIKey");
+            authenticationBuilder = builder.Services
+                .AddAuthentication(APIKeyDefaults.AuthenticationScheme);
+        } else if (!useAuthenticationNegotiate && !useAuthenticationAPIKey) {
+            this._Logger.LogConfigureServicesFeature(_FeatureName, "No Authentication");
+            return;
+        } else {
+            throw new NotSupportedException();
+        }
+
+        if (useAuthenticationNegotiate) {
             _ = authenticationBuilder
                 .AddNegotiate();
         }
 
-        if (this._ApplicationFeatures.AuthenticationAPIKey is { Length: > 0 } authenticationAPIKey) {
+        if (useAuthenticationAPIKey) {
             _ = authenticationBuilder
                 .AddAPIKey(
                     authenticationScheme: global::Microsoft.AspNetCore.Authentication.ApiKey.APIKeyDefaults.AuthenticationScheme,

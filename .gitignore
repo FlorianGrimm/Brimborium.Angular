@@ -402,4 +402,6 @@ FodyWeavers.xsd
 Brimborium.Angular/src/WebApp/wwwroot/
 Brimborium.Macro/src/WebApp/wwwroot/
 
+temp/
+xxx/
 #

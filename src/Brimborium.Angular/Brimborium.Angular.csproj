@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
         <TargetFramework>net11.0</TargetFramework>
         <Nullable>enable</Nullable>
@@ -11,6 +11,8 @@
         <EnableConfigurationBindingGenerator>true</EnableConfigurationBindingGenerator>
         <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.Extensions.Configuration.Binder.SourceGeneration</InterceptorsPreviewNamespaces>
         <EnableRequestDelegateGenerator>true</EnableRequestDelegateGenerator>
+        <NoWarn>$(NoWarn);NU1510;NU190</NoWarn>
+        <GenerateJSModuleManifest>false</GenerateJSModuleManifest>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(EnableAOT)'=='true'">
@@ -30,17 +32,26 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Remove="wwwroot\favicon.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Injectio">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.Json" />
         <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Brimborium.Angular.Contract\Brimborium.Angular.Contract.csproj" />
         <ProjectReference Include="..\Brimborium.AngularUI\Brimborium.AngularUI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\favicon.ico" />
     </ItemGroup>
 </Project>
