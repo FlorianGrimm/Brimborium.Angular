@@ -1,0 +1,34 @@
+<style>
+  :host {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<div class="page-content content-container">
+  <h1>Project Rest</h1>
+  <div class="content-horizontal">
+    <div class="content-navigation">
+      <app-navigation-root></app-navigation-root>
+    </div>
+    <div class="content-main">
+      <form (submit)="onSubmit($event)">
+        <label for="projectForm_ProjectId">
+          ProjectId:
+        </label>
+        <input type="text" [formField]="projectForm.ProjectId" id="projectForm_ProjectId" class="field-input" />
+        <label for="projectForm_Name">
+          Name:
+        </label>
+        <input type="text" [formField]="projectForm.Name" id="projectForm_Name" class="field-input" />
+        @if (projectForm.Name().touched() && projectForm.Name().invalid()) {
+        <div class="error-list">
+          @for (error of projectForm.Name().errors(); track error) {
+          <p>{{ error.message }}</p>
+          }
+        </div>
+        }
+        <button type="submit" class="field-input">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

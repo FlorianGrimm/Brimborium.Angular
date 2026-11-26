@@ -22,7 +22,7 @@ public sealed partial class AuthenticationFeature(
         if (useAuthenticationNegotiate && useAuthenticationAPIKey) {
             this._Logger.LogConfigureServicesFeature(_FeatureName, "Negotiate,APIKey");
             authenticationBuilder = builder.Services
-                .AddAuthentication()
+                .AddAuthentication("Default")
                 .AddPolicyScheme("Default", "Default", options => {
                     options.ForwardDefaultSelector = forwardDefaultSelector;
 
@@ -73,7 +73,7 @@ public sealed partial class AuthenticationFeature(
     public ConfigureWebApplicationOrder GetOrder() => ConfigureWebApplicationOrder.Authentication;
 
     public void ConfigureWebApplication(WebApplication app) {
-        this._Logger.LogConfigureWebApplicationFeature(_FeatureName);
+        this._Logger.LogConfigureWebApplicationFeature(_FeatureName, string.Empty);
 
         _ = app.UseAuthentication();
         _ = app.UseAuthorization();

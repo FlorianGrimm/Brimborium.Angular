@@ -38,7 +38,7 @@ public sealed partial class RateLimiterFeature(
             return;
         }
 
-        this._Logger.LogConfigureWebApplicationFeature(_FeatureName);
+        this._Logger.LogConfigureWebApplicationFeature(_FeatureName, string.Empty);
 
         app.UseRateLimiter();
     }

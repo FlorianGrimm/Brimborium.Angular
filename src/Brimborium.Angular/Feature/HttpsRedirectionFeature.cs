@@ -22,7 +22,7 @@ public sealed partial class HttpsRedirectionFeature(
             return;
         }
 
-        this._Logger.LogConfigureWebApplicationFeature(_FeatureName);
+        this._Logger.LogConfigureWebApplicationFeature(_FeatureName, string.Empty);
         app.UseHttpsRedirection();
     }
 }

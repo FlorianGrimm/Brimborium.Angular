@@ -52,7 +52,7 @@ public sealed partial class OpenApiFeature(
             return;
         }
 
-        this._Logger.LogConfigureWebApplicationFeature(_FeatureName);
+        this._Logger.LogConfigureWebApplicationFeature(_FeatureName, string.Empty);
         _ = app.MapOpenApi().AllowAnonymous();
     }
 

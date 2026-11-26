@@ -249,9 +249,9 @@ public static partial class IConfigureServicesLogExtension {
     // ConfigureWebApplication
     [LoggerMessage(
         Level = LogLevel.Information,
-        Message = "ConfigureWebApplication-Feature({featureName})"
+        Message = "ConfigureWebApplication-Feature({featureName}) {additional}"
         )]
-    public static partial void LogConfigureWebApplicationFeature(this ILogger logger, string featureName);
+    public static partial void LogConfigureWebApplicationFeature(this ILogger logger, string featureName, string additional);
 
     [LoggerMessage(
         Level = LogLevel.Information,
@@ -353,7 +353,7 @@ public sealed class MinimalApiEndpointConfigureWebApplication(
 
     public void ConfigureWebApplication(WebApplication app) {
         // register all MinimalAPI endpoints
-        this._Logger.LogConfigureWebApplicationFeature(_FeatureName);
+        this._Logger.LogConfigureWebApplicationFeature(_FeatureName, string.Empty);
         if (app.Services.GetServices<IMinimalApiEndpoint>() is { } list) {
             foreach (var minimalApiEndpoint in list) {
                 minimalApiEndpoint.MapMinimalApi(app);

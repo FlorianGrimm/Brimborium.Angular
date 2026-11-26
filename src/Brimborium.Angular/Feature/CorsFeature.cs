@@ -36,7 +36,7 @@ public sealed partial class CorsFeature(
         }
 
         {
-            this._Logger.LogConfigureWebApplicationFeature(_FeatureName);
+            this._Logger.LogConfigureWebApplicationFeature(_FeatureName, string.Empty);
             app.UseCors();
         }
     }
